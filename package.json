@@ -10,10 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kbackowski/factory-boy"
+    "url": "https://github.com/boostable/factory-boy"
   },
   "bugs" : {
-    "url" : "https://github.com/kbackowski/factory-boy/issues"
+    "url" : "https://github.com/boostable/factory-boy/issues"
   },
   "devDependencies": {
     "coffee-script"       : "1.6.3",
@@ -29,5 +29,5 @@
   "author": "Kamil Backowski <kbackowski@gmail.com>",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "gitHead": "054dd26fd46ce2332f60772d92d2c82b78324c92"
+  "gitHead": "de5bbbc4cb02d69a745ab28dcc0994a8a4d6468c"
 }
