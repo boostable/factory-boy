@@ -1,3 +1,5 @@
+path = require('path')
+
 utils = require('./utils')
 FactoryBase = require('./factory_base')
 
@@ -6,6 +8,8 @@ initializeWith = (klass, attributes, callback) ->
 
 createWith = (klass, attributes, callback) ->
   klass.create(attributes, callback)
+
+factoryDirs = ['./test/factories']
 
 Factory =
   factories: {}
@@ -34,9 +38,22 @@ Factory =
       createMethod = (factory.createWith || @createWith)
       createMethod(factory.options.class, factory.attributes(), callback)
 
+  load: (dirs) ->
+    if !dirs
+      dirs = @factoryDirs
+    if typeof(dirs) == 'string'
+      dirs = [dirs]
+
+    dirs.forEach (dir) ->
+      require("fs").readdirSync(dir).forEach (file) ->
+        require(path.join(process.env.PWD, dir, file))
+
+    Factory
+
   reload: ->
     @createWith = createWith
     @initializeWith = initializeWith
+    @factoryDirs = factoryDirs
     @factories = {}
 
   _evaluateLazyAttributes: (factory, callback) ->
