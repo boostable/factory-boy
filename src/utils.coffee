@@ -8,6 +8,7 @@ series = (binding, callbacks, last) ->
     callback = callbacks.shift()
     if callback
       callback.func.call binding, ->
+        throw new Error(arguments[0]) if arguments[0]
         binding[callback.field] = arguments[1]
         next()
     else

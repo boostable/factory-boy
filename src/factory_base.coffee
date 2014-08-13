@@ -22,7 +22,7 @@ class FactoryBase
 
     @[field] = (callback) ->
       Factory.create factoryName, options, (err, object) ->
-        callback(err, object[factoryField])
+        callback(err, if object then object[factoryField] else null)
 
   sequence: (field, sequenceCallback) ->
     n = 1
